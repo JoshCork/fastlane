@@ -17,3 +17,16 @@ console.log(rel2) // "Can't compare relationships because that and undefined are
 Notice in the second example, because the y value was missing, the output said that undefined was not a number.
 
 Adapted from UVa problem 11172.
+
+Need to identify when it is not a number NaN
+Need to identify when it is undefined.
+Need to identify when it is an empty string.
+
+
+Msg1: Can't compaare relationship because X is not a number.
+Msg2: Can't eompare relationship because X and Y are not numbers.
+
+
+if !X && !Y THEN Msg2
+	Else If !x THEN Msg1 for X
+	Else THEN Msg2 for Y
