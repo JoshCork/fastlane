@@ -94,8 +94,35 @@ function alphabetizer(names) {
     for (var name in myNames) {
         newNameList.push(reverser(myNames[name].split(' ')));
     }
-    
-    return newNameList.sort();    
+
+    return newNameList.sort();
+}
+
+function totalBytes(results) {
+
+    var myPageStats = results.pageStats;
+    var loadBytes = 0
+
+    console.log("i made it here");
+    console.log('myPageStats: ' + myPageStats);
+
+    //console.log(myPageStats.hasOwnProperty(0));
+    //console.log(myPageStats.hasOwnProperty(key));
+
+    for (var key in myPageStats) {
+        
+        if (myPageStats.hasOwnProperty(key)) {
+            if (key.indexOf('ResponseBytes') > -1 ) {
+             //console.log(key + " -> " + myPageStats[key] + ' --> GOTCHA!!!' );
+             loadBytes = loadBytes + parseInt(myPageStats[key],10);             
+            }
+            
+        }
+    }
+
+    console.log(loadBytes);
+    return loadBytes
+
 }
 
 
@@ -105,19 +132,108 @@ function alphabetizer(names) {
 
 
 var moonWalkers = [
-  "Neil Armstrong",
-  "Buzz Aldrin",
-  "Pete Conrad",
-  "Alan Bean",
-  "Alan Shepard",
-  "Edgar Mitchell",
-  "David Scott",
-  "James Irwin",
-  "John Young",
-  "Charles Duke",
-  "Eugene Cernan",
-  "Harrison Schmitt"
+    "Neil Armstrong",
+    "Buzz Aldrin",
+    "Pete Conrad",
+    "Alan Bean",
+    "Alan Shepard",
+    "Edgar Mitchell",
+    "David Scott",
+    "James Irwin",
+    "John Young",
+    "Charles Duke",
+    "Eugene Cernan",
+    "Harrison Schmitt"
 ];
 
 
+var psinsights; // holds the JSON - that was returned from Google below
+
+psinsights = {
+    "kind": "pagespeedonline#result",
+    "id": "/speed/pagespeed",
+    "responseCode": 200,
+    "title": "PageSpeed Home",
+    "score": 90,
+    "pageStats": {
+        "numberResources": 22,
+        "numberHosts": 7,
+        "totalRequestBytes": "2761",
+        "numberStaticResources": 16,
+        "htmlResponseBytes": "91981",
+        "cssResponseBytes": "37728",
+        "imageResponseBytes": "13909",
+        "javascriptResponseBytes": "247214",
+        "otherResponseBytes": "8804",
+        "numberJsResources": 6,
+        "numberCssResources": 2
+    },
+    "formattedResults": {
+        "locale": "en_US",
+        "ruleResults": {
+            "AvoidBadRequests": {
+                "localizedRuleName": "Avoid bad requests",
+                "ruleImpact": 0.0
+            },
+            "MinifyJavaScript": {
+                "localizedRuleName": "Minify JavaScript",
+                "ruleImpact": 0.1417,
+                "urlBlocks": [{
+                    "header": {
+                        "format": "Minifying the following JavaScript resources could reduce their size by $1 ($2% reduction).",
+                        "args": [{
+                            "type": "BYTES",
+                            "value": "1.3KiB"
+                        }, {
+                            "type": "INT_LITERAL",
+                            "value": "0"
+                        }]
+                    },
+                    "urls": [{
+                        "result": {
+                            "format": "Minifying $1 could save $2 ($3% reduction).",
+                            "args": [{
+                                "type": "URL",
+                                "value": "http://code.google.com/js/codesite_tail.pack.04102009.js"
+                            }, {
+                                "type": "BYTES",
+                                "value": "717B"
+                            }, {
+                                "type": "INT_LITERAL",
+                                "value": "1"
+                            }]
+                        }
+                    }, {
+                        "result": {
+                            "format": "Minifying $1 could save $2 ($3% reduction).",
+                            "args": [{
+                                "type": "URL",
+                                "value": "http://www.gmodules.com/ig/proxy?url\u003dhttp%3A%2F%2Fjqueryjs.googlecode.com%2Ffiles%2Fjquery-1.2.6.min.js"
+                            }, {
+                                "type": "BYTES",
+                                "value": "258B"
+                            }, {
+                                "type": "INT_LITERAL",
+                                "value": "0"
+                            }]
+                        }
+                    }]
+                }]
+            },
+            "SpriteImages": {
+                "localizedRuleName": "Combine images into CSS sprites",
+                "ruleImpact": 0.0
+            }
+        }
+    },
+    "version": {
+        "major": 1,
+        "minor": 11
+    }
+};
+
+
+
 $('#innerHTML').append(alphabetizer(moonWalkers));
+
+totalBytes(psinsights);
