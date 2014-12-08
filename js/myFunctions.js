@@ -103,20 +103,12 @@ function totalBytes(results) {
     var myPageStats = results.pageStats;
     var loadBytes = 0
 
-    console.log("i made it here");
-    console.log('myPageStats: ' + myPageStats);
-
-    //console.log(myPageStats.hasOwnProperty(0));
-    //console.log(myPageStats.hasOwnProperty(key));
-
     for (var key in myPageStats) {
-        
+
         if (myPageStats.hasOwnProperty(key)) {
-            if (key.indexOf('ResponseBytes') > -1 ) {
-             //console.log(key + " -> " + myPageStats[key] + ' --> GOTCHA!!!' );
-             loadBytes = loadBytes + parseInt(myPageStats[key],10);             
+            if (key.indexOf('ResponseBytes') > -1) {
+                loadBytes = loadBytes + parseInt(myPageStats[key], 10);
             }
-            
         }
     }
 
@@ -125,6 +117,23 @@ function totalBytes(results) {
 
 }
 
+
+// Iterate through the localizedRuleNames in ruleResults and 
+// return an array of their strings.
+function ruleList(results) {
+    // Your code goes here!
+
+    var myRuleList = results.formattedResults.ruleResults;
+    var myRuleNames = [];
+
+    for (var key in myRuleList) {
+        myRuleNames.push(myRuleList[key].localizedRuleName);
+    }
+
+    console.log(myRuleNames);
+    return myRuleNames;
+
+}
 
 
 
@@ -232,8 +241,5 @@ psinsights = {
     }
 };
 
+$('#innerHTML').append(ruleList(psinsights));
 
-
-$('#innerHTML').append(alphabetizer(moonWalkers));
-
-totalBytes(psinsights);

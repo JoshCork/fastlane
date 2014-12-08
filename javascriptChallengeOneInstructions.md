@@ -1,3 +1,25 @@
+Twelve people have walked on the Moon. They are:
+
+Neil Armstrong
+Buzz Aldrin
+Pete Conrad
+Alan Bean
+Alan Shepard
+Edgar Mitchell
+David Scott
+James Irwin
+John W Young
+Charles Duke
+Eugene Cernan
+Harrison Schmitt
+You'll notice that these names are listed in the order that they first stepped on the Moon, not alphabetical order. To alphabetize them, it would make sense to write their names as lastname, firstname. For example: Neil Armstrong becomes Armstrong, Neil.
+
+Finish the alphabetizer(_names) function, which takes in a names array (of length N) containing strings of names and returns an alphabetized array of names in lastname, firstname format.
+
+
+/* ----------------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------*/
+
 We learned about relational operators and how they can classify the relationship between two values. Your job is to write the function getRelationship(x,y) function, which should return a string representing whether x is >, < or = y. For example:
 
 var rel = getRelationship(2, 3);
@@ -42,6 +64,9 @@ LOG: 'Can't compare relationship because undefined is not a number.'
 LOG: 'Can't compare relationship because hi and undefined are not numbers.'
 LOG: 'Can't compare relationship because NaN and undefined are not numbers.'
 LOG: 'Can't compare relationship because NaN and undefined are not numbers.'
+
+
+
 TEST: comparison1 
 It returns > :  FAILED
 AssertionError: expected '7 > 5' to equal '>'
