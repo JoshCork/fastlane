@@ -30,3 +30,45 @@ Msg2: Can't eompare relationship because X and Y are not numbers.
 if !X && !Y THEN Msg2
 	Else If !x THEN Msg1 for X
 	Else THEN Msg2 for Y
+
+
+FAILING:
+
+LOG: '1 < 4'
+LOG: '1 = 1'
+LOG: 'Can't compare relationship because that is not a number.'
+LOG: 'Can't compare relationship because this and  something else are not numbers.'
+LOG: 'Can't compare relationship because undefined is not a number.'
+LOG: 'Can't compare relationship because hi and undefined are not numbers.'
+LOG: 'Can't compare relationship because NaN and undefined are not numbers.'
+LOG: 'Can't compare relationship because NaN and undefined are not numbers.'
+TEST: comparison1 
+It returns > :  FAILED
+AssertionError: expected '7 > 5' to equal '>'
+TEST: comparison2 
+It returns = :  FAILED
+AssertionError: expected 'Can\'t compare relationship because an empty string and an empty string are not numbers.' to equal '='
+TEST: comparison3 
+It returns > :  FAILED
+AssertionError: expected 'Can\'t compare relationship because an empty string is not a number.' to equal '>'
+TEST: comparison4 
+It returns = :  FAILED
+AssertionError: expected '1 = 1' to equal '='
+TEST: comparison5 
+It returns Can't compare relationships because this is not a number :  FAILED
+AssertionError: expected 'Can\'t compare relationship because this is not a number.' to equal 'Can\'t compare relationships because this is not a number'
+TEST: comparison6 
+It returns Can't compare relationships because that and the other are not numbers :  FAILED
+AssertionError: expected 'Can\'t compare relationship because that and the other are not numbers.' to equal 'Can\'t compare relationships because that and the other are not numbers'
+TEST: comparison7 
+It returns Can't compare relationships because undefined is not a number :  FAILED
+AssertionError: expected 'Can\'t compare relationship because an empty string and undefined are not numbers.' to equal 'Can\'t compare relationships because undefined is not a number'
+TEST: comparison8 
+It returns Can't compare relationships because hello and undefined are not numbers :  FAILED
+AssertionError: expected 'Can\'t compare relationship because hello and undefined are not numbers.' to equal 'Can\'t compare relationships because hello and undefined are not numbers'
+TEST: comparison9 
+It returns Can't compare relationships because NaN and undefined are not numbers :  FAILED
+AssertionError: expected 'Can\'t compare relationship because NaN and undefined are not numbers.' to equal 'Can\'t compare relationships because NaN and undefined are not numbers'
+TEST: comparison10 
+It returns Can't compare relationships because NaN and undefined are not numbers :  FAILED
+AssertionError: expected 'Can\'t compare relationship because NaN and undefined are not numbers.' to equal 'Can\'t compare relationships because NaN and undefined are not numbers'

@@ -1,8 +1,8 @@
-function getRelationship(x,y) {
+function getRelationship(x, y) {
 
     var vOne = x;
-    var vTwo = y;  
-    var myMessage;  
+    var vTwo = y;
+    var myMessage;
 
     vOneValidity = evalMe(vOne)[0];
     vOneMessage = evalMe(vOne)[1];
@@ -12,7 +12,7 @@ function getRelationship(x,y) {
     function evalMe(z) {
         var e = z;
         var evaluation = [];
-        var canEvaluate = undefined;
+        var canEvaluate;
 
         switch (typeof e) {
             case 'string':
@@ -25,50 +25,53 @@ function getRelationship(x,y) {
 
             default:
                 canEvaluate = false;
-                evaluation = [canEvaluate,e]; // e is null or undefined. 
+                evaluation = [canEvaluate, e]; // e is null or undefined. 
                 break;
-        };
+        }
 
         if (canEvaluate) {
             if (e) {
-            	if (isNaN(e)) {
-            		evaluation = [false,e]; // a string that is not a number
-            	} else {
-            		evaluation = [canEvaluate,e];  // these are numbers or strings that will convert to a number.               	
-            	}
-                
-            } else {
-                evaluation = [false,'an empty string']; // empty string                
-            };
+                if (isNaN(e)) {
+                    evaluation = [false, e]; // a string that is not a number
+                } else {
+                    evaluation = [canEvaluate, e]; // these are numbers or strings that will convert to a number.
+                }
 
-        };
-        
+            } else if (isNaN(e)) {
+                evaluation = [false, 'NaN']; // empty string
+            } else {
+            	evaluation = [false, 'an empty string']; // empty string
+            }
+
+        }
+
         return evaluation;
 
-    };
+    }
 
     if (vOneValidity && vTwoValidity) {
-    	if (vOne < vTwo) { // true
-		  myMessage = vOne + ' is less than ' + vTwo;
-		} else if (vOne > vTwo) {
-		  myMessage = vOne + ' is greater than ' + vTwo;
-		} else {
-		  myMessage = vOne + ' and ' + vTwo + ' are equal.';
-		}
+        if (vOne < vTwo) { // true
+            myMessage = vOne + ' < ' + vTwo;
+        } else if (vOne > vTwo) {
+            myMessage = vOne + ' > ' + vTwo;
+        } else {
+            myMessage = vOne + ' = ' + vTwo;
+        }
     } else {
-    	// something is wrong.  let the user know. 
-    	if (!vOneValidity && !vTwoValidity) {
-    		myMessage = "Can't compare relationship because " + vOneMessage + ' and ' + vTwoMessage + ' are not numbers.'
-    	} else if (!vOneValidity) {
-    		myMessage = "Can't compare relationship because " + vOneMessage + ' is not a number.'
-    	} else {
-    		myMessage = "Can't compare relationship because " + vTwoMessage + ' is not a number.'
-    	}
-    };
+        // something is wrong.  let the user know. 
+        if (!vOneValidity && !vTwoValidity) {
+            myMessage = "Can't compare relationship because " + vOneMessage + ' and ' + vTwoMessage + ' are not numbers.';
+        } else if (!vOneValidity) {
+            myMessage = "Can't compare relationship because " + vOneMessage + ' is not a number.';
+        } else {
+            myMessage = "Can't compare relationship because " + vTwoMessage + ' is not a number.';
+        }
+    }
 
     return myMessage;
 
 }
 
-var myOutput = getRelationship(1,1);
-$("#innerHTML").append(myOutput);
+var myNaN = 1 / 0;
+console.log(myNaN);
+$("#innerHTML").append(getRelationship(NaN,undefined));
