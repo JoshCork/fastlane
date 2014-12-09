@@ -46,10 +46,11 @@ function getRelationship(x, y) {
                 }
 
             } else if (isNaN(e)) {
-                evaluation = [false, 'NaN']; // empty string
+                evaluation = [false, 'NaN']; // NaN given as input.
             } else {
                 evaluation = [true, e]; // empty string
-                // changed the above from false to true to pass the automated unit tests that evaluate an empty string as valid input. 
+                // changed the above from false to true to pass the automated unit tests that evaluate an empty string as valid input.
+                // in my opinion this relationship evaluation should be thrown out.  The automated test would evaluate '' and 0 as = 
             }
 
         }
