@@ -1,3 +1,11 @@
+
+/**
+ *  
+ * @param  {number} x first value to be compared.
+ * @param  {number} y second value to be compared. 
+ * @return {string}   Returns the relationship between x and y showing if x is >,<, or = to y. If it can not be evaluated it 
+ * returns a string telling the user why.
+ */
 function getRelationship(x, y) {
 
     var vOne = x;
@@ -73,6 +81,11 @@ function getRelationship(x, y) {
 
 }
 
+/**
+ * This function will return a list of names in the lastName, firstName format and sort them alphabetically.
+ * @param  {array} names - an array of strings, containing names in "firstName lastName" format.
+ * @return {array}       returns an array of names in "lastName, firstName" format and sorts that list alphabetically.
+ */
 function alphabetizer(names) {
     // You'll notice that these names are listed in the order that they first stepped on the Moon, 
     // not alphabetical order. To alphabetize them, it would make sense to write their names as lastname, 
