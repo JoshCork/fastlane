@@ -101,19 +101,16 @@ function alphabetizer(names) {
 function totalBytes(results) {
 
     var myPageStats = results.pageStats;
-    var loadBytes = 0
+    var loadBytes = 0;
 
     for (var key in myPageStats) {
-
         if (myPageStats.hasOwnProperty(key)) {
             if (key.indexOf('ResponseBytes') > -1) {
                 loadBytes = loadBytes + parseInt(myPageStats[key], 10);
             }
         }
     }
-
-    console.log(loadBytes);
-    return loadBytes
+    return loadBytes;
 
 }
 
@@ -128,9 +125,7 @@ function ruleList(results) {
 
     for (var key in myRuleList) {
         myRuleNames.push(myRuleList[key].localizedRuleName);
-    }
-
-    console.log(myRuleNames);
+    }    
     return myRuleNames;
 
 }
