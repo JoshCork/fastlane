@@ -1,22 +1,38 @@
+/**
+ * @fileOverview functions written to pass specific tests for my 
+ * web-developer front-end nano-degree from Udacity.
+ * @author joshua.cork@gmail.com (Joshua Cork)
+ */
+
 
 /**
  *  
  * @param  {number} x first value to be compared.
  * @param  {number} y second value to be compared. 
- * @return {string}   Returns the relationship between x and y showing if x is >,<, or = to y. If it can not be evaluated it 
- * returns a string telling the user why.
+ * @return {string}   Returns the relationship between x and y showing if x is >,<
+ *                            , or = to y. If it can not be evaluated it returns a 
+ *                            string telling the user why.
  */
 function getRelationship(x, y) {
 
-    var vOne = x;
-    var vTwo = y;
+    var vOne = evalMe(x);
+    var vTwo = evalMe(y);
     var myMessage;
 
-    vOneValidity = evalMe(vOne)[0];
-    vOneMessage = evalMe(vOne)[1];
-    vTwoValidity = evalMe(vTwo)[0];
-    vTwoMessage = evalMe(vTwo)[1];
+    vOneValidity = vOne[0];
+    vOneMessage = vOne[1];
+    vTwoValidity = vTwo[0];
+    vTwoMessage = vTwo[1];
 
+    /**
+     * evalMe checks to see if the value passed into this function can be evaluated
+     * per the instructions given in the challange statement.
+     * @param  {string} z this is a parameter passed into the getRelationship function.
+     * @return {array}   passes back an array that contains one boolean and one string.
+     *                          the string is boolean declares if the paramater is valid
+     *                          for comparison, the string is the reason why it is not or
+     *                          a copy of the parameter that was passed in.
+     */
     function evalMe(z) {
         var e = z;
         var evaluation = [];
