@@ -75,7 +75,8 @@ function getRelationship(x, y) {
 
     }
 
-    if (vOneValidity && vTwoValidity) {
+
+    if (vOneValidity && vTwoValidity) { // both paramiters are valid to to compare. 
         if (vOne < vTwo) { // true
             myMessage = '<';
         } else if (vOne > vTwo) {
@@ -83,8 +84,7 @@ function getRelationship(x, y) {
         } else {
             myMessage = '=';
         }
-    } else {
-        // something is wrong.  let the user know. 
+    } else { // something is wrong with a parameter that was passed in.  let the user know.
         if (!vOneValidity && !vTwoValidity) {
             myMessage = "Can't compare relationships because " + vOneMessage + ' and ' + vTwoMessage + ' are not numbers';
         } else if (!vOneValidity) {
@@ -103,39 +103,55 @@ function getRelationship(x, y) {
  * @param  {array} names - an array of strings, containing names in "firstName lastName" format.
  * @return {array}       returns an array of names in "lastName, firstName" format and sorts that list alphabetically.
  */
-function alphabetizer(names) {
-    // You'll notice that these names are listed in the order that they first stepped on the Moon, 
-    // not alphabetical order. To alphabetize them, it would make sense to write their names as lastname, 
-    // firstname. For example: Neil Armstrong becomes Armstrong, Neil.
-    // Finish the alphabetizer(_names) function, which takes in a names array (of length N) containing 
-    // strings of names and returns an alphabetized array of names in lastname, firstname format.
+function alphabetizer(names) {    
 
     var myNames = names;
     var newNameList = [];
 
-
+    /**
+     * This function takes in an array of strings (names) and reverses the array  and then passes
+     * back the result as a string separated by a space and a comma.  IMprovements that could be made: 
+     * check to make sure that the parameter passed in (the array) has only two values and throw an error
+     * message if it does not. 
+     * @param  {array.string} name an array of strings.  Should be two. In this case a first name and last name
+     * @return {string}      returns the array in reverse order as a single string. with a comma and a space.
+     */
     function reverser(name) {
         var myName = name;
         var myRname = name[1] + ', ' + name[0];
         return myRname;
     }
 
-
+    /**
+     * @description iterate through every name in the array of names sent into the function and split them
+     * by spaces and then send them to the reverser function for processing.  Then push the returned value 
+     * onto the newNameList array. 
+     */
     for (var name in myNames) {
         newNameList.push(reverser(myNames[name].split(' ')));
     }
 
+    /**
+     * @description sort the newNameList array and return it.
+     */
     return newNameList.sort();
 }
 
+
+/**
+ * This function iterations through the pageStats JSON object returned from Google to calculate the total
+ * bytes that the returned (responseBytes).
+ * @param  {object} results a JSON object returned by Google
+ * @return {number}         the sum of every key that has "responseBytes" in the name.
+ */
 function totalBytes(results) {
 
     var myPageStats = results.pageStats;
     var loadBytes = 0;
 
     for (var key in myPageStats) {
-        if (myPageStats.hasOwnProperty(key)) {
-            if (key.indexOf('ResponseBytes') > -1) {
+        if (myPageStats.hasOwnProperty(key)) { // ignores javascript object keys that don't have properties
+            if (key.indexOf('ResponseBytes') > -1) { 
                 loadBytes = loadBytes + parseInt(myPageStats[key], 10);
             }
         }
@@ -180,6 +196,7 @@ var moonWalkers = [
     "Harrison Schmitt"
 ];
 
+// 402397
 
 var psinsights; // holds the JSON - that was returned from Google below
 
