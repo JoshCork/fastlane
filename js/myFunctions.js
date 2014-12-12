@@ -161,10 +161,13 @@ function totalBytes(results) {
 }
 
 
-// Iterate through the localizedRuleNames in ruleResults and 
-// return an array of their strings.
-function ruleList(results) {
-    // Your code goes here!
+/**
+ * This funciton iterates through the google pageStats JSON object and returns the names of 
+ * all the rules.
+ * @param  {object} results this is the google pagestats JSON object
+ * @return {array.string}         Returns an array of strings that contain the names of the rules. 
+ */
+function ruleList(results) {    
 
     var myRuleList = results.formattedResults.ruleResults;
     var myRuleNames = [];
@@ -196,7 +199,8 @@ var moonWalkers = [
     "Harrison Schmitt"
 ];
 
-// 402397
+// 402397 - auto grader gives this answer so I must need to look at all the keys that contain "bytes"
+// and not just the response bytes values. 
 
 var psinsights; // holds the JSON - that was returned from Google below
 
