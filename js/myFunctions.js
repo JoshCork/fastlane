@@ -199,8 +199,8 @@ var moonWalkers = [
     "Harrison Schmitt"
 ];
 
-// 402397 - auto grader gives this answer so I must need to look at all the keys that contain "bytes"
-// and not just the response bytes values. 
+// 402397 - auto grader failed my solution and gives this answer so I must need to look at all 
+// the keys that contain "bytes" and not just the response bytes values. 
 
 var psinsights; // holds the JSON - that was returned from Google below
 
