@@ -151,7 +151,7 @@ function totalBytes(results) {
 
     for (var key in myPageStats) {
         if (myPageStats.hasOwnProperty(key)) { // ignores javascript object keys that don't have properties
-            if (key.indexOf('ResponseBytes') > -1) { 
+            if (key.indexOf('Bytes') > -1) { 
                 loadBytes = loadBytes + parseInt(myPageStats[key], 10);
             }
         }
